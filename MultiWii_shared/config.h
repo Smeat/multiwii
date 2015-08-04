@@ -36,7 +36,7 @@
     //#define BI
     //#define TRI
     //#define QUADP
-    //#define QUADX
+    #define QUADX
     //#define Y4
     //#define Y6
     //#define HEX6
@@ -58,22 +58,23 @@
        This is the minimum value that allow motors to run at a idle speed  */
     //#define MINTHROTTLE 1300 // for Turnigy Plush ESCs 10A
     //#define MINTHROTTLE 1120 // for Super Simple ESCs 10A
-    //#define MINTHROTTLE 1064 // special ESC (simonk)
+   // #define MINTHROTTLE 1064 // special ESC (simonk)
     //#define MINTHROTTLE 1050 // for brushed ESCs like ladybird
-    #define MINTHROTTLE 1150 // (*) (**)
+    //#define MINTHROTTLE 1150 // (*) (**)
+    #define MINTHROTTLE 1100
 
   /****************************    Motor maxthrottle    *******************************/
     /* this is the maximum value for the ESCs at full power, this value can be increased up to 2000 */
-    #define MAXTHROTTLE 1850
+    #define MAXTHROTTLE 2000
 
   /****************************    Mincommand          *******************************/
     /* this is the value for the ESCs when they are not armed
        in some cases, this value must be lowered down to 900 for some specific ESCs, otherwise they failed to initiate */
     #define MINCOMMAND  1000
 
-  /**********************************  I2C speed for old WMP config (useless config for other sensors)  *************/
-    #define I2C_SPEED 100000L     //100kHz normal mode, this value must be used for a genuine WMP
-    //#define I2C_SPEED 400000L   //400kHz fast mode, it works only with some WMP clones
+  /**********************************    I2C speed   ************************************/
+    //#define I2C_SPEED 100000L     //100kHz normal mode, this value must be used for a genuine WMP
+    #define I2C_SPEED 400000L   //400kHz fast mode, it works only with some WMP clones
 
   /***************************    Internal i2c Pullups   ********************************/
     /* enable internal I2C pull ups (in most cases it is better to use external pullups) */
@@ -144,7 +145,7 @@
       //#define Bobs_9DOF_V1     // BobsQuads 9DOF V1 with ITG3200, BMA180 & HMC5883L
       //#define Bobs_10DOF_BMP_V1 // BobsQuads 10DOF V1 with ITG3200, BMA180, HMC5883L & BMP180 - BMP180 is software compatible with BMP085
       //#define FLYDUINO_MPU       // MPU6050 Break Out onboard 3.3V reg
-      //#define CRIUS_AIO_PRO
+      #define CRIUS_AIO_PRO
       //#define DESQUARED6DOFV2GO  // DEsquared V2 with ITG3200 only
       //#define DESQUARED6DOFV4    // DEsquared V4 with MPU6050
       //#define LADYBIRD
@@ -351,7 +352,7 @@ Channel values
 At this moment you can use this function only with WinGUI 2.3 release. MultiWiiConf does not support it yet
 */
 
-//#define EXTENDED_AUX_STATES
+#define EXTENDED_AUX_STATES
 
 
   /**************************************************************************************/
@@ -502,7 +503,7 @@ At this moment you can use this function only with WinGUI 2.3 release. MultiWiiC
     #define SERIAL0_COM_SPEED 115200
     #define SERIAL1_COM_SPEED 115200
     #define SERIAL2_COM_SPEED 115200
-    #define SERIAL3_COM_SPEED 115200
+    #define SERIAL3_COM_SPEED 9600
 
     /* when there is an error on I2C bus, we neutralize the values during a short time. expressed in microseconds
        it is relevent only for a conf with at least a WMP */
@@ -522,7 +523,7 @@ At this moment you can use this function only with WinGUI 2.3 release. MultiWiiC
       //#define GYRO_LPF_256HZ     // This is the default setting, no need to uncomment, just for reference
       //#define GYRO_LPF_188HZ
       //#define GYRO_LPF_98HZ
-      //#define GYRO_LPF_42HZ
+      #define GYRO_LPF_42HZ
       //#define GYRO_LPF_20HZ
       //#define GYRO_LPF_10HZ
       //#define GYRO_LPF_5HZ       // Use this only in extreme cases, rather change motors and/or props -- setting not available on ITG3200
@@ -577,12 +578,12 @@ At this moment you can use this function only with WinGUI 2.3 release. MultiWiiC
 
   /************************        continuous gyro calibration        ********************/
   /* Gyrocalibration will be repeated if copter is moving during calibration. */
-    //#define GYROCALIBRATIONFAILSAFE
+    #define GYROCALIBRATIONFAILSAFE
 
   /************************        AP FlightMode        **********************************/
   /*** FUNCTIONALITY TEMPORARY REMOVED ***/
     /* Temporarily Disables GPS_HOLD_MODE to be able to make it possible to adjust the Hold-position when moving the sticks.*/
-    //#define AP_MODE 40  // Create a deadspan for GPS.
+    #define AP_MODE 40  // Create a deadspan for GPS.
         
   /************************   Assisted AcroTrainer    ************************************/
     /* Train Acro with auto recovery. Value set the point where ANGLE_MODE takes over.
@@ -597,7 +598,7 @@ At this moment you can use this function only with WinGUI 2.3 release. MultiWiiC
        PITCH, ROLL and YAW is centered and THROTTLE is set to FAILSAFE_THROTTLE value. You must set this value to descending about 1m/s or so
        for best results. This value is depended from your configuration, AUW and some other params.  Next, after FAILSAFE_OFF_DELAY the copter is disarmed, 
        and motors is stopped. If RC pulse coming back before reached FAILSAFE_OFF_DELAY time, after the small quard time the RC control is returned to normal. */
-    //#define FAILSAFE                                // uncomment  to activate the failsafe function
+    #define FAILSAFE                                // uncomment  to activate the failsafe function
     #define FAILSAFE_DELAY     10                     // Guard time for failsafe activation after signal lost. 1 step = 0.1sec - 1sec in example
     #define FAILSAFE_OFF_DELAY 200                    // Time for Landing before motors stop in 0.1sec. 1 step = 0.1sec - 20sec in example
     #define FAILSAFE_THROTTLE  (MINTHROTTLE + 200)    // (*) Throttle level used for landing - may be relative to MINTHROTTLE - as in this case
@@ -651,7 +652,7 @@ At this moment you can use this function only with WinGUI 2.3 release. MultiWiiC
 
     /* introduce a deadband around the stick center
        Must be greater than zero, comment if you dont want a deadband on roll, pitch and yaw */
-    //#define DEADBAND 6
+    #define DEADBAND 4
 
   /**************************************************************************************/
   /***********************                  GPS                **************************/
@@ -666,7 +667,7 @@ At this moment you can use this function only with WinGUI 2.3 release. MultiWiiC
        in NMEA mode the GPS must be configured to output GGA and RMC NMEA sentences (which is generally the default conf for most GPS devices)
        at least 5Hz update rate. uncomment the first line to select the GPS serial port of the arduino */
        
-    //#define GPS_SERIAL 2         // should be 2 for flyduino v2. It's the serial port number on arduino MEGA
+    #define GPS_SERIAL 3        // should be 2 for flyduino v2. It's the serial port number on arduino MEGA
                                    // must be 0 for PRO_MINI (ex GPS_PRO_MINI)
                                    // note: Now a GPS can share MSP on the same port. The only constrain is to not use it simultaneously, and use the same port speed.
 
@@ -681,7 +682,7 @@ At this moment you can use this function only with WinGUI 2.3 release. MultiWiiC
 
     
     //#define NMEA
-    //#define UBLOX
+    #define UBLOX
     //#define MTK_BINARY16
     //#define MTK_BINARY19
     //#define INIT_MTK_GPS        // initialize MTK GPS for using selected speed, 5Hz update rate and GGA & RMC sentence or binary settings
@@ -705,7 +706,7 @@ At this moment you can use this function only with WinGUI 2.3 release. MultiWiiC
     #define GPS_LED_INDICATOR
 
    //Enables the MSP_WP command set , which is used by WinGUI for displaying an setting up navigation
-   //#define USE_MSP_WP
+   #define USE_MSP_WP
 
    // HOME position is reset at every arm, uncomment it to prohibit it (you can set home position with GyroCalibration)    
    //#define DONT_RESET_HOME_AT_ARM
@@ -740,7 +741,7 @@ Also note, that maqgnetic declination changes with time, so recheck your value e
 #define SAFE_WP_DISTANCE           500      //(**)
 
 //Maximu allowable navigation altitude (in meters) automatic altitude control will not go above this height
-#define MAX_NAV_ALTITUDE           100     //(**)
+#define MAX_NAV_ALTITUDE           50     //(**)
 
 // minimum speed when approach waypoint
 #define NAV_SPEED_MIN              100    // cm/sec //(**)
@@ -881,21 +882,21 @@ Also note, that maqgnetic declination changes with time, so recheck your value e
   /****                             TELEMETRY                      ****/
   /********************************************************************/
     // select one of the two protocols depending on your receiver
-    //#define FRSKY_TELEMETRY           // used for FRSKY twoway receivers with telemetry (D-series like D8R-II or D8R-XP) 
+    #define FRSKY_TELEMETRY           // used for FRSKY twoway receivers with telemetry (D-series like D8R-II or D8R-XP) 
                                       // VBAT, Baro, MAG, GPS and POWERMETER are helpful
                                       // VBAT_CELLS is optional for a forth screen on the display FLD-02
     //#define SPORT_TELEMETRY           // for FRSKY twoway receivers with S.PORT telemetry (S-series like X4R/X6R/X8R), not implemented yet - TO BE DONE
 
     // FRSKY common entries - valid for both protocols
-    #define TELEMETRY_SERIAL 3        // change if required
+    #define TELEMETRY_SERIAL 2        // change if required
 
     // FRSKY standard telemetry specific devices
-    #define FRSKY_FLD02               // send only data specific for the FRSKY display FLD-02
-    //#define OPENTX                    // send OpenTX specific data
+    //#define FRSKY_FLD02               // send only data specific for the FRSKY display FLD-02
+    #define OPENTX                    // send OpenTX specific data
 
     // FRSKY standard telemetry specific selections
     //#define COORDFORMAT_DECIMALMINUTES // uncomment to get the format DD°MM.mmmm for the coordinates - comment out to get the format DD.dddddd° for the coordinates 
-    //#define KILOMETER_HOUR            // send speed in kilometers per hour instead of knots (default) - requested by OPENTX
+    #define KILOMETER_HOUR            // send speed in kilometers per hour instead of knots (default) - requested by OPENTX
     #define TELEMETRY_ALT_BARO        // send BARO based altitude, calibrated to 0 when arming, recommended if BARO available
     //#define TELEMETRY_ALT_GPS         // send GPS based altitude (altitude above see level), for FLD-02 don't use together with TELEMETRY_ALT_BARO
     #define TELEMETRY_COURSE_MAG      // send MAG based course/heading, recommended if MAG available, but FLD-02 does not display
